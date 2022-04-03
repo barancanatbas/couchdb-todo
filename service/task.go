@@ -36,7 +36,8 @@ func (t TaskService) Create(task model.Task) error {
 
 	task.ID = id
 
-	return t.repo.Create(task)
+	err := t.repo.Create(task)
+	return err
 }
 
 func (t TaskService) Update(task model.Task) error {

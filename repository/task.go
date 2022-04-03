@@ -12,6 +12,7 @@ type ItaskRepository interface {
 	Create(task model.Task) error
 	Update(task model.Task) error
 	Delete(id string) error
+	Close()
 }
 
 type TaskRepository struct {
@@ -82,4 +83,8 @@ func (t TaskRepository) Delete(id string) error {
 	}
 
 	return nil
+}
+
+func (t TaskRepository) Close() {
+	t.bucket.Close()
 }
